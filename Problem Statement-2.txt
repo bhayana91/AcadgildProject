@@ -1,0 +1,49 @@
+Write a Pig UDF to filter the districts who have reached 80% of their objective.
+
+
+public class Progress extends FilterFunc{
+
+	@Override
+	public Boolean exec(Tuple tuple) throws IOException{
+
+	Double finalResult = 0.0;
+		
+	if(tuple == null || tuple.size() == 0)
+		return null;
+
+		try {
+			float a3 = (Float) tuple.get(2);
+			float a4 = (Float) tuple.get(3);
+			float a5 = (Float) tuple.get(4);
+			float a6 = (Float) tuple.get(5);
+			float a7 = (Float) tuple.get(6);
+			float a8 = (Float) tuple.get(7);
+			float a9 = (Float) tuple.get(8);
+			float a10 = (Float) tuple.get(9);
+			float a11 = (Float) tuple.get(10);
+			float a12 = (Float) tuple.get(11);
+			float a13 = (Float) tuple.get(12);
+			float a14 = (Float) tuple.get(13);
+			float a15 = (Float) tuple.get(14);
+			float a16 = (Float) tuple.get(15);
+			float a17 = (Float) tuple.get(16);
+			float a18 = (Float) tuple.get(17);
+			
+			Double performace = a3+a4+a5+a6+a7+a8+a9+a10;
+			Double objective = a11+a12+a13+a14+a15+a16+a17+a18;
+			
+			finalResult = (performace/objective) * 100;
+			
+			if(Math.round(d) == 80){
+				
+				return true;
+			}
+			
+		} catch(Exception e){
+			throw new IOException("Caught exception processing input row" + e);
+		}
+	return false;
+}
+
+
+}
