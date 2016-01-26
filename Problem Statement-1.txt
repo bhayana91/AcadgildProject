@@ -1,0 +1,29 @@
+Find out the districts who achieved 100 percent objective.
+
+Solution: 
+
+1. REGISTER /home/acadgild/Downloads/piggybank-0.15.0.jar;
+
+
+
+2. DEFINE XPath org.apache.pig.piggybank.evaluation.xml.XPath();
+
+
+
+3. A =  LOAD '/flume_import' using org.apache.pig.piggybank.storage.XMLLoader('row') as (x:chararray);
+
+B = FOREACH A GENERATE XPath(x, 'row/State_Name'), XPath(x, 'row/District_Name'),XPath(x, 'row/Project_Objectives_IHHL_BPL'),XPath(x, 'row/Project_Objectives_IHHL_APL'),XPath(x, 'row/Project_Objectives_IHHL_TOTAL'),XPath(x, 'row/Project_Objectives_SCW'),XPath(x, 'row/Project_Objectives_School_Toilets'),XPath(x, 'row/Project_Objectives_Anganwadi_Toilets'),XPath(x,'row/Project_Objectives_RSM'),XPath(x, 'row/Project_Objectives_PC'),XPath(x ,'row/Project_Performance-IHHL_BPL'),XPath(x,'row/Project_Performance-IHHL_APL'),XPath(x ,'row/Project_Performance-IHHL_TOTAL'),XPath(x, 'row/Project_Performance-SCW'),XPath(x, 'row/Project_Performance-School_Toilets'),XPath(x ,'row/Project_Performance-Anganwadi_Toilets'),XPath(x, 'row/Project_Performance-RSM'),XPath(x ,'row/Project_Performance-PC');
+
+STORE B into 'clean_data2' USING PigStorage(',');
+
+
+
+4. data = LOAD '/user/acadgild/clean_data2/part-m-00000' using PigStorage(',');
+
+
+
+5. C = FILTER data BY $2==$10 AND $3==$11 AND $4==$12 AND $5==$13 AND $6==$14 AND $7==$15 AND $8==$16 AND $9==$17;
+
+
+
+6. STORE C INTO '/projout1' using PigStorage(','); 
