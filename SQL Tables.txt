@@ -1,0 +1,5 @@
+CREATE TABLE Problem1 ( state VARCHAR(20), district VARCHAR(20), BPL INT, APL INT, total INT, SCW INT, SchoolToilet INT, AngToilet INT, RSM INT, PC INT, PerfBPL INT, PerfAPL INT, PerfTotal INT, PerfSCW INT, PerfSchoolToilet INT, PerfAngToilet INT, PerfRSM INT, PerfPC INT );
+
+
+
+CREATE TABLE Problem2 ( state VARCHAR(20), district VARCHAR(20), BPL INT, APL INT, total INT, SCW INT, SchoolToilet INT, AngToilet INT, RSM INT, PC INT, PerfBPL INT, PerfAPL INT, PerfTotal INT, PerfSCW INT, PerfSchoolToilet INT, PerfAngToilet INT, PerfRSM INT, PerfPC INT );
