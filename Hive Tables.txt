@@ -1,0 +1,5 @@
+CREATE EXTERNAL TABLE problem1 (state STRING, district STRING, BP: BIGINT, APL BIGINT, total BIGINT, PerfBPL BIGINT, PerfAPL BIGINT, PerfTotal BIGINT, PerfSCW BIGINT, PerSchoolToilet BIGINT, PerfAngToilet BIGINT, PerfRSM BIGINT, PerfPC BIGINT) STORED BY
+'org.elasticsearch.hadoop.hive.EsStorageHandler' TBLPROPERTIES('es.resource'='ques/one');
+
+CREATE EXTERNAL TABLE problem2 (state STRING, district STRING, BP: BIGINT, APL BIGINT, total BIGINT, PerfBPL BIGINT, PerfAPL BIGINT, PerfTotal BIGINT, PerfSCW BIGINT, PerSchoolToilet BIGINT, PerfAngToilet BIGINT, PerfRSM BIGINT, PerfPC BIGINT) STORED BY
+'org.elasticsearch.hadoop.hive.EsStorageHandler' TBLPROPERTIES('es.resource'='ques/two');
