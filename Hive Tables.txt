@@ -1,5 +1,24 @@
-CREATE EXTERNAL TABLE problem1 (state STRING, district STRING, BP: BIGINT, APL BIGINT, total BIGINT, PerfBPL BIGINT, PerfAPL BIGINT, PerfTotal BIGINT, PerfSCW BIGINT, PerSchoolToilet BIGINT, PerfAngToilet BIGINT, PerfRSM BIGINT, PerfPC BIGINT) STORED BY
+--Create table in Hive
+
+CREATE TABLE DataInP1 state STRING, district STRING, BPL BIGINT, APL BIGINT, total BIGINT, PerfBPL BIGINT, PerfAPL BIGINT, PerfTotal BIGINT, PerfSCW BIGINT, PerSchoolToilet BIGINT, PerfAngToilet BIGINT, PerfRSM BIGINT, PerfPC BIGINT) row formatted delimited fields terminated by ',';
+
+--Create external table in Hive
+
+CREATE EXTERNAL TABLE problem1 (state STRING, district STRING, BPL BIGINT, APL BIGINT, total BIGINT, PerfBPL BIGINT, PerfAPL BIGINT, PerfTotal BIGINT, PerfSCW BIGINT, PerSchoolToilet BIGINT, PerfAngToilet BIGINT, PerfRSM BIGINT, PerfPC BIGINT) STORED BY
 'org.elasticsearch.hadoop.hive.EsStorageHandler' TBLPROPERTIES('es.resource'='ques/one');
 
-CREATE EXTERNAL TABLE problem2 (state STRING, district STRING, BP: BIGINT, APL BIGINT, total BIGINT, PerfBPL BIGINT, PerfAPL BIGINT, PerfTotal BIGINT, PerfSCW BIGINT, PerSchoolToilet BIGINT, PerfAngToilet BIGINT, PerfRSM BIGINT, PerfPC BIGINT) STORED BY
-'org.elasticsearch.hadoop.hive.EsStorageHandler' TBLPROPERTIES('es.resource'='ques/two');
+
+
+--Loading Data in local table.
+
+LOAD DATA LOCAL INPATH '/home/acadgild/ques.csv' into table DataInP1;
+
+--Loading Data in External Table (ElasticSearch)
+
+INSERT OVERWRITE TABLE problem1 SELECT * from DataInP1;
+
+
+
+
+
+
