@@ -1,0 +1,18 @@
+--Fume Command--
+
+
+
+flume-ng agent -n agent1 -c conf -f /home/acadgild/filecopy.conf
+
+
+
+--Sqoop Command--
+
+
+
+sqoop export --username root --password $%$%$%$% --connect jdbc:mysql://localhost/demo --table Problem1 --export-dir /user/acadgild/ques1/part*
+
+
+
+
+sqoop export --username root --password $%$%$%$% --connect jdbc:mysql://localhost/demo --table Problem2 --export-dir /user/acadgild/ques2/part*
